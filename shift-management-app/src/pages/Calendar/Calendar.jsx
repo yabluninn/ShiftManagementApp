@@ -1,3 +1,4 @@
+import SelectedDayPopup from "../../components/gui_components/popups/SelectedDayPopup";
 import "./Calendar.css";
 
 import { useState, useEffect } from "react";
@@ -10,19 +11,21 @@ export default function Calendar() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
+  const [isSelectedDayPopupOpen, setSelectedDayPopupOpen] = useState(false);
+
   const months = [
-    "Січень",
-    "Лютий",
-    "Березень",
-    "Квітень",
-    "Травень",
-    "Червень",
-    "Липень",
-    "Серпень",
-    "Вересень",
-    "Жовтень",
-    "Листопад",
-    "Грудень",
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
 
   useEffect(() => {
@@ -44,13 +47,13 @@ export default function Calendar() {
 
     let firstDayIndex = date.getDay();
     if (firstDayIndex === 0) {
-      firstDayIndex = 6; // Сдвигаем воскресенье в конец
+      firstDayIndex = 6;
     } else {
-      firstDayIndex -= 1; // Остальные дни сдвигаем на один назад
+      firstDayIndex -= 1;
     }
 
     const lastDayIndex = new Date(year, month + 1, 0).getDay();
-    const adjustedLastDayIndex = lastDayIndex === 0 ? 6 : lastDayIndex - 1; // Коррекция для последнего дня недели
+    const adjustedLastDayIndex = lastDayIndex === 0 ? 6 : lastDayIndex - 1;
 
     const prevLastDay = new Date(year, month, 0).getDate();
     const lastDay = new Date(year, month + 1, 0).getDate();
@@ -58,9 +61,8 @@ export default function Calendar() {
     const nextDays = 7 - adjustedLastDayIndex - 1;
 
     if (viewMode === "month") {
-      // Рендер текущего месяца
       setWeekdaysVisibility(true);
-      // Рендер предыдущих дней
+
       for (let x = firstDayIndex; x > 0; x--) {
         const day = document.createElement("div");
         day.classList.add("calendar-date", "disabled");
@@ -68,7 +70,6 @@ export default function Calendar() {
         calendarDates.appendChild(day);
       }
 
-      // Рендер текущего месяца
       for (let i = 1; i <= lastDay; i++) {
         const day = document.createElement("div");
         day.classList.add("calendar-date");
@@ -94,13 +95,12 @@ export default function Calendar() {
         }
 
         day.addEventListener("click", () => {
-          setSelectedDate(new Date(year, month, i));
+          handleSelectDate(new Date(year, month, i));
         });
 
         calendarDates.appendChild(day);
       }
 
-      // Рендер следующих дней
       for (let j = 1; j <= nextDays; j++) {
         const day = document.createElement("div");
         day.classList.add("calendar-date", "disabled");
@@ -118,7 +118,7 @@ export default function Calendar() {
       const endOfWeek = new Date(startOfWeek);
       endOfWeek.setDate(startOfWeek.getDate() + 6);
 
-      const weekdays = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"];
+      const weekdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
       setStartDate(startOfWeek.toLocaleDateString("uk-UA"));
       setEndDate(endOfWeek.toLocaleDateString("uk-UA"));
@@ -148,15 +148,13 @@ export default function Calendar() {
         }
 
         if (i === 5 || i === 6) {
-          // Сб-Вс
           day.classList.add("calendar-date-half");
         } else {
-          // Пн-Пт
           day.classList.add("calendar-date-full");
         }
 
         day.addEventListener("click", () => {
-          setSelectedDate(currentDay);
+          handleSelectDate(currentDay);
         });
 
         calendarDates.appendChild(day);
@@ -188,6 +186,16 @@ export default function Calendar() {
     setSelectedDate(newDate);
   };
 
+  const handleSelectDate = (date) => {
+    console.log("Selected date: " + date);
+    setSelectedDate(date);
+    setSelectedDayPopupOpen(true);
+  };
+
+  const closeSelectDayPopup = () => {
+    setSelectedDayPopupOpen(false);
+  };
+
   return (
     <>
       <div className="calendar-page">
@@ -210,7 +218,7 @@ export default function Calendar() {
                   className={`today-btn ${viewMode === "month" ? "" : ""}`}
                   onClick={() => setSelectedDate(new Date())}
                 >
-                  Сьогодні
+                  Today
                 </button>
                 <button
                   className={`week-btn ${
@@ -218,7 +226,7 @@ export default function Calendar() {
                   }`}
                   onClick={() => handleViewChange("week")}
                 >
-                  Тиждень
+                  Week
                 </button>
                 <button
                   className={`month-btn ${
@@ -226,7 +234,7 @@ export default function Calendar() {
                   }`}
                   onClick={() => handleViewChange("month")}
                 >
-                  Місяць
+                  Month
                 </button>
               </div>
             </div>
@@ -236,13 +244,13 @@ export default function Calendar() {
               className="calendar-days"
               style={{ display: isWeekdaysVisible ? "flex" : "none" }}
             >
-              <div className="calendar-day">Пн</div>
-              <div className="calendar-day">Вт</div>
-              <div className="calendar-day">Ср</div>
-              <div className="calendar-day">Чт</div>
-              <div className="calendar-day">Пт</div>
-              <div className="calendar-day">Сб</div>
-              <div className="calendar-day">Нд</div>
+              <div className="calendar-day">Mon</div>
+              <div className="calendar-day">Tue</div>
+              <div className="calendar-day">Wed</div>
+              <div className="calendar-day">Thu</div>
+              <div className="calendar-day">Fri</div>
+              <div className="calendar-day">Sat</div>
+              <div className="calendar-day">Sun</div>
             </div>
             <div
               className="calendar-week-buttons"
@@ -265,6 +273,11 @@ export default function Calendar() {
             ></div>
           </div>
         </div>
+        <SelectedDayPopup
+          isOpen={isSelectedDayPopupOpen}
+          onClose={closeSelectDayPopup}
+        />
+        <div id="selected-day-popup-root"></div>
       </div>
     </>
   );
