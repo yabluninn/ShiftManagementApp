@@ -8,6 +8,7 @@ export default function Header() {
           <i className="hgi-stroke hgi-clock-01"></i>
           <p className="header-today-info">{new Date().toLocaleDateString()}</p>
         </div>
+        <p className="header-current-page">Calendar</p>
         <div className="header-menu-block">
           <button className="menu-button">
             <i className="hgi-stroke hgi-calendar-03"></i>
