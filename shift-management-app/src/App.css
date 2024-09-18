@@ -1,0 +1,70 @@
+.app {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+}
+
+.nav-menu {
+  width: 15%;
+  height: 100vh;
+  background-color: white;
+  padding: 0 15px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+}
+
+.app-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f4f4;
+  height: 100vh;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.app-logo {
+  width: fit-content;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: "Quicksand", sans-serif;
+  background-color: var(--primary-color);
+  border-radius: 12px;
+  cursor: pointer;
+  color: white;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.app-logo img {
+  width: 30px;
+  height: auto;
+  margin: 0;
+  margin-right: 12px;
+}
+
+.nav-buttons {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 15px;
+  border-top: 1px solid #ccc;
+}

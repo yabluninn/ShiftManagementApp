@@ -1,0 +1,192 @@
+:root {
+  --primary-color: #4b72ff;
+  --secondary-button-color: #e7ebfb;
+  --secondary-color: #f2f2f2;
+  --neutral-color: white;
+  --text-color: rgb(104, 104, 104);
+}
+
+.calendar-page {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendar-container {
+  width: 700px;
+  height: 600px;
+  overflow: hidden;
+  /* background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+}
+
+.calendar-header {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.calendar-header-block {
+  height: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: row;
+  background-color: white;
+  padding: 0px 16px 0px 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-header-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  margin-left: 16px;
+  width: 50px;
+}
+
+.calendar-header-buttons button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.calendar-header-buttons button i {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.calendar-view-buttons {
+  width: fit-content;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  border: 1px solid rgb(17, 191, 17);
+  border-radius: 8px;
+}
+
+.calendar-view-buttons button {
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 8px;
+  color: var(--primary-color);
+}
+
+.current-view-btn {
+  background-color: var(--primary-color);
+  color: white !important;
+}
+
+#current-month {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.calendar-body {
+  padding: 10px 0px 30px 0px;
+  height: 450px; /* Уменьшена высота для лучшего отображения */
+}
+
+.calendar-days {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.calendar-day {
+  width: calc(100% / 7); /* Каждая ячейка занимает одну седьмую ширины */
+  text-align: center;
+  padding: 10px 0;
+  font-size: 18px;
+}
+
+.calendar-dates {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Равномерное распределение ячеек */
+}
+
+.calendar-date {
+  width: calc(100% / 7 - 5px);
+  height: 80px;
+  margin: 2px 0;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-direction: row;
+  padding: 8px;
+  background-color: white;
+}
+
+.calendar-date-full {
+  width: 100%;
+}
+
+.calendar-date-half {
+  width: 49.7%;
+}
+
+.calendar-date:hover {
+  background-color: rgba(17, 191, 17, 0.126);
+}
+
+.calendar-date.selected {
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.calendar-date.today {
+  border: 2px dashed var(--primary-color);
+  color: var(--primary-color);
+  width: calc(100% / 7 - 5px); /* Соответствие ширины */
+  height: 80px; /* Соответствие высоты */
+}
+
+.calendar-date.disabled {
+  color: #bbb;
+}
+
+.current-week {
+  font-weight: bold;
+  font-size: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.calendar-week-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.calendar-week-buttons button {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

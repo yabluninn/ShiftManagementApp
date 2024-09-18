@@ -1,0 +1,27 @@
+.textarea-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.textarea-container label {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.textarea-container label i {
+  margin-right: 0.5rem;
+}
+
+.textarea-container textarea {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  min-height: 100px;
+  max-height: 300px;
+  resize: none;
+}

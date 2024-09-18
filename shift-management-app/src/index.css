@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+
+/* Сброс полей и отступов */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+
+  --primary-color: rgb(17, 191, 17);
+  --hover-primary-color: rgb(14, 150, 14);
+}
+
+/* Убираем стили списков */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Убираем стили ссылок */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Убираем стили кнопок */
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Сброс таблиц */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Универсальный сброс для элементов формы */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+  color: inherit;
+}
+
+/* Обнуляем стили заголовков и параграфов */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  font-weight: normal;
+}
+
+/* Сброс стилей изображений */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Полный сброс для body и html */
+html,
+body {
+  height: 100%;
+  font-family: sans-serif;
+  font-size: 100%;
+  line-height: 1.5;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+div {
+  box-sizing: border-box;
+}
